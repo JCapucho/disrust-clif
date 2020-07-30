@@ -1,0 +1,25 @@
+From c51b3044c830fbefb3df44253520f2094b146309 Mon Sep 17 00:00:00 2001
+From: Capucho <jcapucho7@gmail.com>
+Date: Wed, 29 Jul 2020 14:34:18 +0100
+Subject: [PATCH] Remove jit message
+
+---
+ src/driver/jit.rs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/driver/jit.rs b/src/driver/jit.rs
+index b27ad7b..a34e759 100644
+--- a/src/driver/jit.rs
++++ b/src/driver/jit.rs
+@@ -72,7 +72,7 @@ pub(super) fn run_jit(tcx: TyCtxt<'_>) -> ! {
+ 
+     let finalized_main: *const u8 = jit_module.get_finalized_function(main_func_id);
+ 
+-    println!("Rustc codegen cranelift will JIT run the executable, because the CG_CLIF_JIT env var is set");
++    // println!("Rustc codegen cranelift will JIT run the executable, because the CG_CLIF_JIT env var is set");
+ 
+     let f: extern "C" fn(c_int, *const *const c_char) -> c_int =
+         unsafe { ::std::mem::transmute(finalized_main) };
+-- 
+2.25.1
+
